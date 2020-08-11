@@ -1,0 +1,2 @@
+# shellscripting
+bash shellscripting notes
