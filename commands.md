@@ -1,5 +1,5 @@
-#### Commands for BASH Shell
-
+### Commands for BASH Shell
+----------------------------------------------------------
 
 * ```pwd```
 * ```cd, cd ~; cd ../;``` 

@@ -1,4 +1,5 @@
-#### Scriptitng Basics
+### Scriptitng Basics
+----------------------------------------------------
 
 * ``` #!/bin/bash ``` Sha-Bang. # -Sharp !- Bang   /bin/bash - invoke bash interpreter. If this line is not added all scripts would be run by ``` /bin/bash  script.sh```
 * ``` ls -l /bin/sh ``` Default shell (eg> in Ubuntu : /bin/sh  >> dash )
