@@ -51,5 +51,5 @@
     * ``` chmod g+x file.sh```  Add Execute permission for Group
     * ``` chmod o+x file.sh```  Add Execute permission for Others 
     * ``` r = 4, w =2, x = 1 . r+w+x = 7. r+w = 6 ``` Eg: chmod 644 file.sh
-* time 
+* ``` time ```
     * ``` time nmap 127.0.0.1``` - This will tell us the time taken by the command to execute. Useful to check script/tool performance.
