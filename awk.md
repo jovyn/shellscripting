@@ -170,10 +170,34 @@ By default seperated by newline. Can devine custom values for RS (record seperat
     * ``` a=b**c ``` Raise var to the power
 
 
+### AWK - if Statement
+
+        if(condition){
+                command(s)
+        }
+        else{
+            command(s)    
+        }
+
+* Comparisons:
+  *  ``` == ``` , ``` < ```, ``` <= ```, ``` > ```, ``` >= ```, ``` != ```
+  * eg: ``` awk '{if ($1 == "Red"){print $1, $2, $3}}' emp.txt ```. Output would be : ``` Red  34  CEO ```. 
+  * OR if we want to print all fields we could also use $0 instead. Eg: ``` awk '{if ($1 == "Red"){print $0}}' emp.txt ``` Output :  ``` Red  34  CEO ```.
 
 
+### AWK For loops
+
+Structure:
+   
+    for (initialization; condition; increment){
+            command(s)
+    }
 
 
+* Eg: ``` awk 'BEGIN{for(i=1; i<=3; i++){print "test -", i}}' ``` 
+Output: 
 
-
+        test - 1
+        test - 2
+        test - 3
 
