@@ -10,11 +10,11 @@ Searches files for patterns and performs actions specified in the AWK body.
 * Main - Executed for ech line of the file.
 * END - After awk process of all lines.
  
-       awk'BEGIN{
+       awk 'BEGIN{
            code_in_BEGIN_section}
        {Code_in_Main_Body}
        END{
-           code_END_Section }'file1 file2 ...
+           code_END_Section }' file1 file2 ...
          
 Example:
         

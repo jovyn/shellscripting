@@ -38,42 +38,42 @@
 * ``` a ``` -  Append text after a line.
     * eg: Append after IT some text : ```  sed '/IT/a QWE  ## XY' emp.txt ```
 
-        output:
-        Name Age Unit
-        Ant  23  IT
-        QWE  ## XY
-        Bec  25  HT
-        Red  34  CEO
-        Dua  32  FIN
-        Wui  29  PR
-        Van  27  Dev
-        Kim  26  Dev
+                output:
+                Name Age Unit
+                Ant  23  IT
+                QWE  ## XY
+                Bec  25  HT
+                Red  34  CEO
+                Dua  32  FIN
+                Wui  29  PR
+                Van  27  Dev
+                Kim  26  Dev
 
 * ``` i 'text' ``` - insert text before a line
     * eg: Insert before IT some text : ```  sed '/IT/i QWE  ## XY' emp.txt ```
 
-        output:
-        Name Age Unit
-        QWE  ## XY
-        Ant  23  IT
-        Bec  25  HT
-        Red  34  CEO
-        Dua  32  FIN
-        Wui  29  PR
-        Van  27  Dev
-        Kim  26  Dev
+                output:
+                Name Age Unit
+                QWE  ## XY
+                Ant  23  IT
+                Bec  25  HT
+                Red  34  CEO
+                Dua  32  FIN
+                Wui  29  PR
+                Van  27  Dev
+                Kim  26  Dev
 
 
 * ``` d ``` - delete the pattern
     * eg: Delete all lines containing 'Dev' : ```  sed '/Dev/d' emp.txt ```
 
-        output:
-        Name Age Unit
-        Ant  23  IT
-        Bec  25  HT
-        Red  34  CEO
-        Dua  32  FIN
-        Wui  29  PR
+            output:
+            Name Age Unit
+            Ant  23  IT
+            Bec  25  HT
+            Red  34  CEO
+            Dua  32  FIN
+            Wui  29  PR
 
 
 * ``` p  ``` - print the pattern.
@@ -99,23 +99,24 @@
 * ``` c ``` - Change command used to change lines.
     * eg: Change all lines with 'Dev' to XXXXXX... - ```  sed '/Dev/c xxxxxxxxxxxxxxxxxxxxxxx' emp.txt ```
 
-        output:
-        Name Age Unit
-        Ant  23  IT
-        Bec  25  HT
-        Red  34  CEO
-        Dua  32  FIN
-        Wui  29  PR
-        xxxxxxxxxxxxxxxxxxxxxxx
-        xxxxxxxxxxxxxxxxxxxxxxx
+         
+             output:
+            Name Age Unit
+            Ant  23  IT
+            Bec  25  HT
+            Red  34  CEO
+            Dua  32  FIN
+            Wui  29  PR
+            xxxxxxxxxxxxxxxxxxxxxxx
+            xxxxxxxxxxxxxxxxxxxxxxx
 
 * ``` q[exit-code] ``` - exit sed without processing any more commands or input.
     * eg:  ```sed '/Bec/q2' emp.txt``` will quit once the search pattern matches and will receive exit status code 2. ```echo $?``` gives an output of ``` 2```
 
-        output:
-        Name Age Unit
-        Ant  23  IT
-        Bec  25  HT
+            output:
+            Name Age Unit
+            Ant  23  IT
+            Bec  25  HT
 
 
 * ``` s/regexp/replacement/[flags]``` - (substitute) Match the regex against the content of the pattern space. If found replace matched string with 'replacement'. Use ```g ``` to substitute globally. 
@@ -152,22 +153,22 @@
     * ``` -e script ``` - add script
         * eg:  Search some text and quit with exit code 2 : ``` sed -ne '/CEO/p' -ne '/CEO/q2' emp.txt  ``` and ``` echo $? ``` will return 2.
 
-            output:
-            Red  34  CEO
+                output:
+                Red  34  CEO
 
         * eg: Print "000- before/after -000" before and after lines containing 'Dua' :  ``` sed -e '/Dua/a 000- after -000' -e '/Dua/i 000- before -000' emp.txt  ```
 
-            output:
-            Name Age Unit
-            Ant  23  IT
-            Bec  25  HT
-            Red  34  CEO
-            000- before -000
-            Dua  32  FIN
-            000- after -000
-            Wui  29  PR
-            Van  27  Dev
-            Kim  26  Dev
+                output:
+                Name Age Unit
+                Ant  23  IT
+                Bec  25  HT
+                Red  34  CEO
+                000- before -000
+                Dua  32  FIN
+                000- after -000
+                Wui  29  PR
+                Van  27  Dev
+                Kim  26  Dev
 
     * ``` -r ``` - use extended regular expressions rather than basic regular expressions.
 
@@ -175,8 +176,8 @@
         * We take a copy of emp.txt as emp2.txt and perform the following :  ```  sed -ni '/Wui/p' emp2.txt ```
         * ``` cat emp2.txt ``` :
 
-            output:
-            Wui  29  PR
+                output:
+                Wui  29  PR
 
         
     *  ``` e ``` To run scripts. This is different than ``` -e ```
@@ -195,37 +196,37 @@
 
         * ``` sed '1 e echo -n "Date:"; date' emp.txt ``` - Print date on the first line.
 
-            output:
-            Date:Sat Aug 29 08:05:41 IST 2020
-            Name Age Unit
-            Ant  23  IT
-            Bec  25  HT
-            Red  34  CEO
-            Dua  32  FIN
-            Wui  29  PR
-            Van  27  Dev
-            Kim  26  Dev
+                output:
+                Date:Sat Aug 29 08:05:41 IST 2020
+                Name Age Unit
+                Ant  23  IT
+                Bec  25  HT
+                Red  34  CEO
+                Dua  32  FIN
+                Wui  29  PR
+                Van  27  Dev
+                Kim  26  Dev
 
         * ```  sed '1,$ e echo -n "Date:"; date' emp.txt ``` - Print date before every line.
 
-            output:
-            Date:Sat Aug 29 08:16:09 IST 2020
-            Name Age Unit
-            Date:Sat Aug 29 08:16:09 IST 2020
-            Ant  23  IT
-            Date:Sat Aug 29 08:16:09 IST 2020
-            Bec  25  HT
-            Date:Sat Aug 29 08:16:09 IST 2020
-            Red  34  CEO
-            Date:Sat Aug 29 08:16:09 IST 2020
-            Dua  32  FIN
-            Date:Sat Aug 29 08:16:09 IST 2020
-            Wui  29  PR
-            Date:Sat Aug 29 08:16:09 IST 2020
-            Van  27  Dev
-            Date:Sat Aug 29 08:16:09 IST 2020
-            Kim  26  Dev
-            Date:Sat Aug 29 08:16:09 IST 2020
+                output:
+                Date:Sat Aug 29 08:16:09 IST 2020
+                Name Age Unit
+                Date:Sat Aug 29 08:16:09 IST 2020
+                Ant  23  IT
+                Date:Sat Aug 29 08:16:09 IST 2020
+                Bec  25  HT
+                Date:Sat Aug 29 08:16:09 IST 2020
+                Red  34  CEO
+                Date:Sat Aug 29 08:16:09 IST 2020
+                Dua  32  FIN
+                Date:Sat Aug 29 08:16:09 IST 2020
+                Wui  29  PR
+                Date:Sat Aug 29 08:16:09 IST 2020
+                Van  27  Dev
+                Date:Sat Aug 29 08:16:09 IST 2020
+                Kim  26  Dev
+                Date:Sat Aug 29 08:16:09 IST 2020
 
         * 
 
