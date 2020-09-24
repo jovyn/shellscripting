@@ -201,3 +201,6 @@ Output:
         test - 2
         test - 3
 
+### AWK Script files :
+
+* Structure :  ``` awk -f awkscript inputfiles```

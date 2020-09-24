@@ -18,6 +18,16 @@
 * Sed by default does not alter the inputfile, only prints. 
 * Sed accepts one single command at a time. To use multiple commands use ``` -e ``` option
 
+*  3 ways to specify multiple instructions:
+   * Using ```;``` . Eg : ``` sed 's/abc/replace/; s/pqr/replace2/' inputfile ```
+   * Using the precedence '-e' . Eg:   ``` sed 's/abc/replace/' -e  's/pqr/replace2/' inputfile ```
+   * Multiline entry:
+        
+                $ sed '
+                > s/Red/Ray/
+                > s/Dev/Development/
+                > ' emp.txt
+
 #### Example file to be used throughout : emp.txt
 
         cat emp.txt
@@ -227,7 +237,12 @@
                 Date:Sat Aug 29 08:16:09 IST 2020
                 Kim  26  Dev
                 Date:Sat Aug 29 08:16:09 IST 2020
+                
+                
+ #### Sed Commands :
+Its not advised to have long sed scripts on commndline, a better option is to  create a script file. 
 
-        * 
+ * Syntax:  sed -f scriptfile inputfile. Where scriptfile contains the sed instructions. 
 
-#### Examples:
+
+
