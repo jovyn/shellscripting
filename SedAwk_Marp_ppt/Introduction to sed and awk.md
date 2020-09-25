@@ -33,25 +33,29 @@ theme: default
 1.  **Bringing it all together.**
 
 --------------
+#  **Regular Expressions**
+
+
+-------------------------------
 
 ## RegEx 
-* ``` . ``` Any single Character eg: hel. (help, hell, helo .. etc)
-* ``` * ``` Preceding Character must match 0 or more times eg: he*lo (hlo, helo, heeeelo, heelo .. etc)
-* ``` ? ``` Preceding Character must match 1 or 0 times eg: he?lo (helo, hlo)    
-* ``` ^ ``` Start of the line marker eg: ^Hello (Line starting with Hello)
-* ``` $ ``` End of the line marker eg: hello$ (Line ending with hello)
-* ```[]``` Any of the characters enclosed in [] eg: Hel[lop] (Hell, Helo, Help)
+* ``` . ``` Any single Character eg: ```hel.``` (help, hell, helo .. etc)
+* ``` * ``` Preceding Character must match 0 or more times eg: ```he*lo``` (hlo, helo, heeeelo, heelo .. etc)
+* ``` ? ``` Preceding Character must match 1 or 0 times eg: ```he?lo``` (helo, hlo)    
+* ``` ^ ``` Start of the line marker eg: ```^Hello``` (Line starting with Hello)
+* ``` $ ``` End of the line marker eg: ```hello$``` (Line ending with hello)
+* ```[]``` Any of the characters enclosed in [] eg: ```Hel[lop]``` (Hell, Helo, Help)
 * ```[-]``` Any of the characters within the range eg: file[1-3] (file1, file2, file3)
 
 
 ---------------
 
-* ```[^]``` Any of the characters except the ones enclosed in [] eg: file[^13] (file0, file2, file4 ...etc)
+* ```[^]``` Any of the characters except the ones enclosed in [] eg: ```file[^13]``` (file0, file2, file4 ...etc)
 * ``` + ``` Preceding item must match 1 or more times eg: file+ (file, files, file1, filex ... etc)
-* ```{n}``` Preceding item must match n times eg: [0-9]{3} (Any 3 digit no .. 111, 134, 098, 678 .. etc)
-* ```{n, }``` Preceding item must match at least n times eg: [0-9]{3} (Any 3 or more digit no .. 111, 134, 0981, 67887, 71236 .. etc)
-* ```{n,m}``` Minimum and maximum nos of times the preceding item must match. eg: [0-9]{2,3} (Any 2 or 3 digit no .. 111, 134, 98, 78 .. etc)
-* ``` \ ``` Escape Character eg: he\\\*ro (he*ro)
+* ```{n}``` Preceding item must match n times eg: ```[0-9]{3}``` (Any 3 digit no .. 111, 134, 098, 678 .. etc)
+* ```{n, }``` Preceding item must match at least n times eg: ```[0-9]{3,}``` (Any 3 or more digit no .. 111, 134, 0981, 67887, 71236 .. etc)
+* ```{n,m}``` Minimum and maximum nos of times the preceding item must match. eg: ```[0-9]{2,3}``` (Any 2 or 3 digit no .. 111, 134, 98, 78 .. etc)
+* ``` \ ``` Escape Character eg: ```he\*ro``` (he*ro)
 
 -----------------
 
@@ -93,16 +97,20 @@ Solution - Case 1:
 ```cat sample.txt | grep -o --color -E '\b((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\b' ```
 
 Reg Ex:
-```\b  \b```
+```\b ``` 
 ``` 25[0-5]|2[0-4][0-9] ``` 
 ```| 1[0-9][0-9]``` 
 ```| [1-9]?[0-9])  \.   ){3} ```
 ``` (25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9] ```
 ``` ?[0-9]) ```
-
+```\b```
 
 
 ------------------------------------
+#  **ed**
+
+
+-------------------------------
 
 ## *ed*
 
@@ -148,6 +156,10 @@ Its a line editing command that has been extracted from ***ed*** and made availa
 **grep** prints all the matching lines.
 
 -----------------
+#  **sed**
+
+
+-------------------------------
 
 ## *sed* 
 
@@ -180,13 +192,17 @@ Its a line editing command that has been extracted from ***ed*** and made availa
 
 #### Command-Line- Options:
 
-* ``` -n ``` - disable automatic printing; sed produced output when explicitlytold via the p command.
+* ``` -n ``` - disable automatic printing; sed produced output when explicitly told via the p command.
 * ``` -e script ``` - add script
 * ``` -r ``` - use extended regular expressions rather than basic regular expressions.
 * ``` -i ``` - Use this flag to modify the input file.
 *  ``` e ``` To run scripts. This is different than ``` -e ```
 
 -----------------------------------
+#  **awk**
+
+
+-------------------------------
 
 ## *awk*
 Searches files for patterns and performs actions specified in the AWK body. 
@@ -307,6 +323,35 @@ Output:
         test - 2
         test - 3
 ----------------------------------
+### Exercises
+-------------------------------
+### Example 1:
+
+Get the gcloud iam service account Ids into a file.
+
+*(Select the 2nd column of the output to file, and omit the first line (column header) and send output to file ```sa1.list``` .)*
+
+* ```gcloud iam service-accounts list | awk -F '[[:space:]][[:space:]]+' '{print $2}' | tail -n+2 > sa1.list ```
+
+
+
+-------------------------------
+
+### Example 2:
+
+Get metadata for each VM instance (Std output redirected to instances_metadata01.out):
+
+   * ```gcloud compute instances list | awk -F '[[:space:]]+' '{print $1, $2}' | tail -n+2 | while read INSTANCE ZONE; do gcloud compute instances describe $INSTANCE --zone=$ZONE 1>> instances_metadata01.out; done```
+
+
+----------------------------
+#  **Q & A**
+
+-----------------------------------
+#  **Thank You**
+
+
+
 
 
 
